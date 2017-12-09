@@ -47,7 +47,7 @@ module SideloadSerializer
     end
 
     def root serializer_instance=serializer
-      serializer_instance.json_key.to_s.pluralize.to_sym
+      serializer_instance.json_key.to_s.split('/')[0].to_s.pluralize.to_sym
     end
 
     def meta
