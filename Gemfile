@@ -3,7 +3,4 @@ source 'https://rubygems.org'
 # Specify your gem's dependencies in sideload_serializer.gemspec
 gemspec
 
-
-gem 'active_model_serializers', github: 'rails-api/active_model_serializers'
-# gem 'pry'
-gem 'camelize_keys', github: 'rocketmade/camelize_keys'
+gem 'active_model_serializers', '~> 0.10.0'

@@ -1,4 +1,3 @@
-
 SpecAlbum = Struct.new(:id, :name, :artist, :songs) do
   extend ActiveModel::Naming
   include ActiveModel::Serialization
