@@ -96,7 +96,7 @@ module SideloadSerializer
     def add_relationship_keys serializer_instance, attributes, include_tree
       serializer_instance.associations(include_tree).each do |association|
         attributes[embed_id_key_for(association)] = relationship_id_value_for association
-        attributes[embed_collection_key_for(association)] = association.lazy_association.serializer
+        attributes[embed_collection_key_for(association)] = root(association.lazy_association.serializer)
       end
     end
 

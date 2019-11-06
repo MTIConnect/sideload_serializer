@@ -1,5 +1,7 @@
 require 'spec_helper'
 
+require 'pp'
+
 RSpec.describe SideloadSerializer::Adapter do
   let(:artist) { SpecArtist.new(1, 'George Ezra') }
   let(:songs) do
@@ -44,6 +46,7 @@ RSpec.describe SideloadSerializer::Adapter do
     expect(serialized_album).to have_key :songIds
     expect(serialized_album).to have_key :artistId
     expect(serialized_album).to have_key :artistCollection
+    expect(serialized_album[:artistCollection]).to be_a Symbol
     expect(serialized_album[:songIds]).to be_a Array
   end
 
