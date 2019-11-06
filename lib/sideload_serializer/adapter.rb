@@ -55,7 +55,7 @@ module SideloadSerializer
 
     def meta
       compiled_meta = {
-        primary_resource_collection: CaseTransform.send(self.class.transform(instance_options), root)
+        primary_resource_collection: self.class.transform_key_casing!(root, instance_options)
       }
 
       unless collection_serializer_given?
@@ -96,7 +96,13 @@ module SideloadSerializer
     def add_relationship_keys serializer_instance, attributes, include_tree
       serializer_instance.associations(include_tree).each do |association|
         attributes[embed_id_key_for(association)] = relationship_id_value_for association
-        attributes[embed_collection_key_for(association)] = root(association.lazy_association.serializer)
+
+        collection_root = nil
+        if association.lazy_association.serializer
+          collection_root = root(association.lazy_association.serializer)
+          collection_root = self.class.transform_key_casing!(collection_root, instance_options)
+        end
+        attributes[embed_collection_key_for(association)] = collection_root
       end
     end
 
