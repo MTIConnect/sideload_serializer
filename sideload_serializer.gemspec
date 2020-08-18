@@ -18,8 +18,7 @@ Gem::Specification.new do |spec|
   spec.executables   = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
   spec.require_paths = ["lib"]
 
-  spec.add_dependency "active_model_serializers", ">= 0.10.0.rc3"
-  spec.add_dependency "camelize_keys"
+  spec.add_dependency "active_model_serializers", "~> 0.10.10"
 
   spec.add_development_dependency "bundler", "~> 1.11"
   spec.add_development_dependency "rake", "~> 10.0"
